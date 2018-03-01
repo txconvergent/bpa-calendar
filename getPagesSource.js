@@ -34,49 +34,33 @@ function classFinder(document_root) {
 
     // get rows
     var rows = table_element.getElementsByTagName('tr');
-/*
-    // iterate over the rows (skip the first one)
-    for () {
-        row.innerText();
-    }
-    */
+    
     // gets certain class (table data)
-    var row = rows[1].getElementsByTagName('td')
-    // gets class Unique
-    row[0].innerText
-    // iterate through rows to find each class
-    // iterate through row of rows to find Unique Name...
-    return DOMtoString(rows);
+    var classlist = []
+    for (var i = 0; i < rows.length; i++){
+        var row = rows[i].getElementsByTagName('td')
+        if (row){
+            classlist.push(row)
+        }
+    }
+
+    classes = []
+    for (var i = 0; i < classlist.length; i++){
+        var classattributes = []
+        for (var j = 0; j < classlist[i].length; j++){
+            var attribute = classlist[i][j].innerText
+            if (attribute){
+                classattributes.push(attribute)
+            }
+        }
+        classes.push(classattributes)      
+    }
+    return classes
 }
 
 function getElementByXpathFromRoot(path) {
     return document.evaluate(path, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 }
-
-    
-function getElementByXpath(parent_element, path) {
-    return document.evaluate(path, parent_element, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-}
-
-/*
-function getNodesbyElement(parent_element, path)
-    var children = parent_element.childNodes;
-    for(child in children){
-        if(children[child]=);
-    }*/
-
-
-
-
-// action being sent
-//chrome.runtime.sendMessage({
-    // request.action
-  //  action: "getSource",
-    // this is request.source
-   // source: document
-//});
-
-
 
 chrome.runtime.sendMessage({
     action: "getSource",
