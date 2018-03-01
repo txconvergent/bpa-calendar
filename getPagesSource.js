@@ -25,6 +25,8 @@ function DOMtoString(document_root) {
     return html;
 }
 
+
+//This function finds the classes
 function classFinder(document_root) {
 
     // xpath to the main table, relative to document_root
